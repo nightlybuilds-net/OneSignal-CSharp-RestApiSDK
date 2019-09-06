@@ -7,18 +7,19 @@ A General purpose rest ApiClient write in C# language for the OneSignal API
 ## Install via NuGet
 
 ```
-PM> Install-Package OneSignal.CSharp.SDK
+PM> Install-Package OneSignal.CSharp.RestApiSDK
 ```
 
 ## How to use
 
 ```csharp
-var client = new OneSignalClient("ZWM3YThlMmQtMzY1NC00ODI1LTlkYjMtMTk3MzI2OTQzMjVh");
+var client = new OneSignalClient($"{RestApiKey}");
 
 var options = new NotificationCreateOptions();
 
-options.AppId = "089e4845-9849-4157-8b29-71e174af3abf";
-options.IncludedSegments = new List<string> { "All" };
+options.AppId = $"{AppId}";
+options.IncludedSegments = new List<string> { "Segment1" };
+options.IncludeExternalUserIds = new List<string> { "CustomId1", "CustomId2" };
 options.Contents.Add(LanguageCodes.English, "Hello world!");
 
 client.Notifications.Create(options);
