@@ -5,7 +5,7 @@ A General purpose rest ApiClient write in C# language for the OneSignal API
 ## Install via NuGet
 
 ```
-PM> Install-Package OneSignal.CSharp.RestApiSDK
+PM> Install-Package OneSignal.CSharp.SDK.NetStandard
 ```
 
 ## How to use
