@@ -32,7 +32,7 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
 
             restRequest.RequestFormat = DataFormat.Json;
             restRequest.JsonSerializer = new NewtonsoftJsonSerializer();
-            restRequest.AddBody(options);
+            restRequest.AddJsonBody(options);
 
             IRestResponse<NotificationCreateResult> restResponse = base.RestClient.Execute<NotificationCreateResult>(restRequest);
 
