@@ -142,7 +142,7 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
         /// Android ChannelId
         /// </summary>
         [JsonProperty("android_channel_id")]
-        public Guid AndroidChannelId { get; set; }
+        public Guid? AndroidChannelId { get; set; }
 
         /// <summary><br/>
         /// Picture to display in the expanded view. Can be a drawable resource name or a URL.<br/>
