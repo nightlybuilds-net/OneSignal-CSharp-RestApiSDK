@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Notifications
 {
     /// <summary>
     /// Class used to define resources needed for client to manage notifications.

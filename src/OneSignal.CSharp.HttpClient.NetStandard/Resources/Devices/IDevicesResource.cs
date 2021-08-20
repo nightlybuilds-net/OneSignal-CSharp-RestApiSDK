@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Devices
 {
     /// <summary>
     /// Interface used to unify creation of classes used to help client add or edit device.

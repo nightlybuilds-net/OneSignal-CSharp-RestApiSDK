@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Devices
 {
     /// <summary>
     /// Class used to keep result of device add operation.

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Notifications
 {
     #region CustomDateTimeConverter
     /// <summary>

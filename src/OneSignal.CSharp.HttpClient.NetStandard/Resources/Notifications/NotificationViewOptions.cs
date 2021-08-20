@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Notifications
 {
     /// <summary>
     /// Get delivery and convert report about single notification.

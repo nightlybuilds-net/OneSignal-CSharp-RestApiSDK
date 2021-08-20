@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Devices
 {
     /// <summary>
     /// Implementation of BaseResource, used to help client add or edit device.

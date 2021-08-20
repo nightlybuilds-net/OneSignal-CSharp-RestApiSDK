@@ -1,4 +1,4 @@
-﻿namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
+﻿namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Notifications
 {
     /// <summary>
     /// Interface used to unify Notification Filter classes.

@@ -1,4 +1,4 @@
-﻿namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
+﻿namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Notifications
 {
     /// <summary>
     /// Types of visibility for apps targeting Android API level 21+ running on Android 5.0+ devices.

@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneSignal.CSharp.SDK.NetStandard", "OneSignal.CSharp.SDK.NetStandard\OneSignal.CSharp.SDK.NetStandard.csproj", "{11FEFAE4-D42A-41EB-AE87-DE69EC1EFEEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneSignal.CSharp.HttpClient.NetStandard", "OneSignal.CSharp.HttpClient.NetStandard\OneSignal.CSharp.HttpClient.NetStandard.csproj", "{11FEFAE4-D42A-41EB-AE87-DE69EC1EFEEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

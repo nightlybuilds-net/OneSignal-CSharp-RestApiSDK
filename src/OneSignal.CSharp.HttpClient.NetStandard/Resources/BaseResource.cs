@@ -3,7 +3,7 @@ using System.Net.Http;
 using HttpTracer;
 using Newtonsoft.Json;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources
 {
     /// <summary>
     /// Abstract class which helps easier implementation of new client resources.
@@ -13,7 +13,7 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources
         /// <summary>
         /// Rest client reference.
         /// </summary>
-        protected HttpClient Client { get; }
+        protected System.Net.Http.HttpClient Client { get; }
 
         /// <summary>
         /// Your OneSignal Api key.
@@ -28,7 +28,7 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources
         protected BaseResource(string apiKey, string apiUri)
         {
             ApiKey = apiKey;
-            this.Client = new HttpClient(new HttpTracerHandler())
+            this.Client = new System.Net.Http.HttpClient(new HttpTracerHandler())
             {
                 BaseAddress = new Uri(apiUri)
             };

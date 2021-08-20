@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Notifications
 {
     /// <summary>
     /// Class used to describe web button.

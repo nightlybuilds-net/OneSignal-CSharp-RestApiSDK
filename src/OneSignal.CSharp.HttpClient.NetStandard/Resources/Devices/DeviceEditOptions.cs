@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Devices
 {
     /// <summary>
     /// Options for editing existing device defined in OneSignal app.

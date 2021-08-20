@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Converters;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Notifications
 {
     /// <summary>
     /// API Documentation: https://documentation.onesignal.com/docs/notifications-create-notification

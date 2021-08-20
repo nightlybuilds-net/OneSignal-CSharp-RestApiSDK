@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
+namespace OneSignal.CSharp.HttpClient.NetStandard.Resources.Notifications
 {
     /// <summary>
     /// Interface used to unify Notification Resource classes.
