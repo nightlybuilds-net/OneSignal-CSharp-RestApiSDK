@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using RestSharp.Deserializers;
 
 namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
 {
@@ -12,7 +11,7 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
         /// Returns whether the message was canceled or not
         /// {'success': "true"}
         /// </summary>
-        [DeserializeAs(Name = "success")]
+        [JsonProperty("success")]
         public string Success { get; set; }
     }
 }

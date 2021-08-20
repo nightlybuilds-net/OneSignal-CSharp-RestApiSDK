@@ -1,4 +1,4 @@
-﻿using RestSharp.Deserializers;
+﻿using Newtonsoft.Json;
 
 namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
 {
@@ -10,13 +10,13 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
         /// <summary>
         /// Returns the number of recepients who received the message.
         /// </summary>
-        [DeserializeAs(Name = "recipients")]
+        [JsonProperty("recipients")]
         public int Recipients { get; set; }
 
         /// <summary>
         /// Returns the id of the result.
         /// </summary>
-        [DeserializeAs(Name = "id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
     }
 }

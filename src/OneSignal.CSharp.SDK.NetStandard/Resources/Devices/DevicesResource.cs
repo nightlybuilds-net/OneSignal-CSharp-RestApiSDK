@@ -3,9 +3,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using OneSignal.CSharp.SDK.NetStandard.Resources.Notifications;
-using OneSignal.CSharp.SDK.NetStandard.Serializers;
-using RestSharp;
 
 namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
 {

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using RestSharp.Deserializers;
 
 namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
 {

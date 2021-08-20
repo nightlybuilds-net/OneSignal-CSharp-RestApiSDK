@@ -1,4 +1,4 @@
-﻿using RestSharp.Deserializers;
+﻿using Newtonsoft.Json;
 
 namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
 {
@@ -10,13 +10,13 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
         /// <summary>
         /// Returns true if operation is successfull.
         /// </summary>
-        [DeserializeAs(Name = "success")]
+        [JsonProperty("success")]
         public bool IsSuccess { get; set; }
 
         /// <summary>
         /// Returns id of the result operation.
         /// </summary>
-        [DeserializeAs(Name = "id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
     }
 }

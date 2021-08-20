@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OneSignal.CSharp.SDK.NetStandard.Resources
+﻿namespace OneSignal.CSharp.SDK.NetStandard.Resources
 {
     /// <summary>
     /// Language codes constants for supported languages.

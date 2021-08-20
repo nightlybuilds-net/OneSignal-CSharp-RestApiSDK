@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using Newtonsoft.Json.Converters;
 
 namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
 {
