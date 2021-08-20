@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using OneSignal.CSharp.SDK.NetStandard.Serializers;
 using RestSharp;
 
@@ -24,31 +28,17 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
         /// </summary>
         /// <param name="options">Options used for notification create operation.</param>
         /// <returns></returns>
-        public NotificationCreateResult Create(NotificationCreateOptions options)
+        public async Task<NotificationCreateResult> Create(NotificationCreateOptions options)
         {
-            RestRequest restRequest = new RestRequest("notifications", Method.POST);
+            var content = new StringContent(JsonConvert.SerializeObject(options), Encoding.UTF8, "application/json");
+            var response = await this.Client.PostAsync("notifications", content);
 
-            restRequest.AddHeader("Authorization", string.Format("Basic {0}", base.ApiKey));
+            var responseString = await response.Content.ReadAsStringAsync();
 
-            restRequest.RequestFormat = DataFormat.Json;
-            restRequest.JsonSerializer = new NewtonsoftJsonSerializer();
-            restRequest.AddJsonBody(options);
+            if (response.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<NotificationCreateResult>(responseString);
 
-            IRestResponse<NotificationCreateResult> restResponse = base.RestClient.Execute<NotificationCreateResult>(restRequest);
-
-            if (!(restResponse.StatusCode != HttpStatusCode.Created || restResponse.StatusCode != HttpStatusCode.OK))
-            {
-                if (restResponse.ErrorException != null)
-                {
-                    throw restResponse.ErrorException;
-                }
-                else if (restResponse.StatusCode != HttpStatusCode.OK && restResponse.Content != null)
-                {
-                    throw new Exception(restResponse.Content);
-                }
-            }
-            
-            return restResponse.Data;
+            throw new Exception(responseString);
         }
 
         /// <summary>
@@ -56,32 +46,14 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
         /// </summary>
         /// <param name="options">Options used for getting delivery and convert report about single notification.</param>
         /// <returns></returns>
-        public NotificationViewResult View(NotificationViewOptions options)
+        public async Task<NotificationViewResult> View(NotificationViewOptions options)
         {
-            var baseRequestPath = "notifications/{0}?app_id={1}";
+            var response = await this.Client.GetAsync($"notifications/{options.Id}?app_id={options.AppId}");
+            var responseString = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<NotificationViewResult>(responseString);
 
-            RestRequest restRequest = new RestRequest(string.Format(baseRequestPath, options.Id, options.AppId), Method.GET);
-
-            restRequest.AddHeader("Authorization", string.Format("Basic {0}", base.ApiKey));
-
-            restRequest.RequestFormat = DataFormat.Json;
-            restRequest.JsonSerializer = new NewtonsoftJsonSerializer();
-
-            var restResponse = base.RestClient.Execute<NotificationViewResult>(restRequest);
-
-            if (!(restResponse.StatusCode != HttpStatusCode.Created || restResponse.StatusCode != HttpStatusCode.OK))
-            {
-                if (restResponse.ErrorException != null)
-                {
-                    throw restResponse.ErrorException;
-                }
-                else if (restResponse.StatusCode != HttpStatusCode.OK && restResponse.Content != null)
-                {
-                    throw new Exception(restResponse.Content);
-                }
-            }
-
-            return restResponse.Data;
+            throw new Exception(responseString);
         }
 
         /// <summary>
@@ -89,28 +61,14 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
         /// </summary>
         /// <param name="options">Options used for notification cancel operation.</param>
         /// <returns></returns>
-        public NotificationCancelResult Cancel(NotificationCancelOptions options)
+        public async Task<NotificationCancelResult> Cancel(NotificationCancelOptions options)
         {
-            RestRequest restRequest = new RestRequest("notifications/" + options.Id, Method.DELETE);
+            var response = await this.Client.DeleteAsync($"notifications");
+            var responseString = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<NotificationCancelResult>(responseString);
 
-            restRequest.AddHeader("Authorization", string.Format("Basic {0}", base.ApiKey));
-
-            restRequest.AddParameter("app_id", options.AppId);
-
-            restRequest.RequestFormat = DataFormat.Json;
-
-            IRestResponse<NotificationCancelResult> restResponse = base.RestClient.Execute<NotificationCancelResult>(restRequest);
-
-            if (restResponse.ErrorException != null)
-            {
-                throw restResponse.ErrorException;
-            }
-            else if (restResponse.StatusCode != HttpStatusCode.OK && restResponse.Content != null)
-            {
-                throw new Exception(restResponse.Content);
-            }
-
-            return restResponse.Data;
+            throw new Exception(responseString);
         }
     }
 }

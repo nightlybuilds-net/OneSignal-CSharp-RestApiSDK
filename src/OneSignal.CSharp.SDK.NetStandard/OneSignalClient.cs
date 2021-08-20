@@ -26,7 +26,7 @@ namespace OneSignal.CSharp.SDK.NetStandard
         /// </summary>
         /// <param name="apiKey">Your OneSignal API key</param>
         /// <param name="apiUri">API uri (default is "https://onesignal.com/api/v1")</param>
-        public OneSignalClient(string apiKey, string apiUri = "https://onesignal.com/api/v1")
+        public OneSignalClient(string apiKey, string apiUri = "https://onesignal.com/api/v1/")
         {
             this.Devices = new DevicesResource(apiKey, apiUri);
             this.Notifications = new NotificationsResource(apiKey, apiUri);

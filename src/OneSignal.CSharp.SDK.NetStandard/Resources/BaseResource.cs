@@ -1,7 +1,10 @@
 ﻿using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace OneSignal.CSharp.SDK.NetStandard.Resources
 {
@@ -13,12 +16,12 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources
         /// <summary>
         /// Rest client reference.
         /// </summary>
-        protected RestClient RestClient { get; set; }
+        protected HttpClient Client { get; }
 
         /// <summary>
         /// Your OneSignal Api key.
         /// </summary>
-        protected string ApiKey { get; set; }
+        protected string ApiKey { get; }
 
         /// <summary>
         /// Default constructor.
@@ -28,7 +31,25 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources
         protected BaseResource(string apiKey, string apiUri)
         {
             ApiKey = apiKey;
-            RestClient = new RestClient(apiUri);
+            this.Client = new HttpClient
+            {
+                BaseAddress = new Uri(apiUri)
+            };
+            this.Client.DefaultRequestHeaders.Add("Authorization",$"Basic {apiKey}");
+        }
+        
+        
+        protected async Task<T> InnerCall<T>(object options)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(options), Encoding.UTF8, "application/json");
+            var response = await this.Client.PostAsync("notifications", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<T>(responseString);
+
+            throw new Exception(responseString);
         }
     }
 }

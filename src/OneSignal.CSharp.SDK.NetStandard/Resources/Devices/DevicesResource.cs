@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using OneSignal.CSharp.SDK.NetStandard.Resources.Notifications;
 using OneSignal.CSharp.SDK.NetStandard.Serializers;
 using RestSharp;
 
@@ -23,24 +28,17 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
         /// </summary>
         /// <param name="options">Here you can specify options used to add new device.</param>
         /// <returns>Result of device add operation.</returns>
-        public DeviceAddResult Add(DeviceAddOptions options)
+        public async Task<DeviceAddResult> Add(DeviceAddOptions options)
         {
-            var restRequest = new RestRequest("players", Method.POST);
+            var content = new StringContent(JsonConvert.SerializeObject(options), Encoding.UTF8, "application/json");
+            var response = await this.Client.PostAsync("players", content);
 
-            restRequest.AddHeader("Authorization", string.Format("Basic {0}", base.ApiKey));
+            var responseString = await response.Content.ReadAsStringAsync();
 
-            restRequest.RequestFormat = DataFormat.Json;
-            restRequest.JsonSerializer = new NewtonsoftJsonSerializer();
-            restRequest.AddBody(options);
+            if (response.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<DeviceAddResult>(responseString);
 
-            var restResponse = base.RestClient.Execute<DeviceAddResult>(restRequest);
-
-            if (restResponse.ErrorException != null)
-            {
-                throw restResponse.ErrorException;
-            }
-
-            return restResponse.Data;
+            throw new Exception(responseString);
         }
 
         /// <summary>
@@ -49,24 +47,15 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
         /// <param name="id">Id of the device</param>
         /// <param name="options">Options used to modify attributes of the device.</param>
         /// <exception cref="Exception"></exception>
-        public void Edit(string id, DeviceEditOptions options)
+        public async Task Edit(string id, DeviceEditOptions options)
         {
-            RestRequest restRequest = new RestRequest("players/{id}", Method.PUT);
+            var content = new StringContent(JsonConvert.SerializeObject(options), Encoding.UTF8, "application/json");
+            var response = await this.Client.PutAsync($"players/{id}", content);
 
-            restRequest.AddHeader("Authorization", string.Format("Basic {0}", base.ApiKey));
+            var responseString = await response.Content.ReadAsStringAsync();
 
-            restRequest.AddUrlSegment("id", id);
-
-            restRequest.RequestFormat = DataFormat.Json;
-            restRequest.JsonSerializer = new NewtonsoftJsonSerializer();
-            restRequest.AddBody(options);
-
-            IRestResponse restResponse = base.RestClient.Execute(restRequest);
-
-            if (restResponse.ErrorException != null)
-            {
-                throw restResponse.ErrorException;
-            }
+            if (!response.IsSuccessStatusCode)
+             throw new Exception(responseString);
         }
     }
 }

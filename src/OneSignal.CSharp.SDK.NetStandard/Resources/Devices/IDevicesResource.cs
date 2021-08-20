@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
 {
@@ -12,7 +13,7 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
         /// </summary>
         /// <param name="options">Here you can specify options used to add new device.</param>
         /// <returns>Result of device add operation.</returns>
-        DeviceAddResult Add(DeviceAddOptions options);
+        Task<DeviceAddResult> Add(DeviceAddOptions options);
 
         /// <summary>
         /// Edits existing device defined in OneSignal App.
@@ -20,6 +21,6 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Devices
         /// <param name="id">Id of the device</param>
         /// <param name="options">Options used to modify attributes of the device.</param>
         /// <exception cref="Exception"></exception>
-        void Edit(string id, DeviceEditOptions options);
+        Task Edit(string id, DeviceEditOptions options);
     }
 }

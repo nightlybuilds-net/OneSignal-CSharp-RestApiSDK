@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
 {
     /// <summary>
@@ -10,20 +12,20 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
         /// </summary>
         /// <param name="options">This parameter can contai variety of possible options used to create notification.</param>
         /// <returns>Returns result of notification create operation.</returns>
-        NotificationCreateResult Create(NotificationCreateOptions options);
+        Task<NotificationCreateResult> Create(NotificationCreateOptions options);
 
         /// <summary>
         /// Cancel notification  Stop a scheduled or currently outgoing notification
         /// </summary>
         /// <param name="options">This parameter contains the information required to cancel a scheduled notification</param>
         /// <returns>Returns result of notification cancel operation.</returns>
-        NotificationCancelResult Cancel(NotificationCancelOptions options);
-      
+        Task<NotificationCancelResult> Cancel(NotificationCancelOptions options);
+
         /// <summary>
         /// Get report about notification
         /// </summary>
         /// <param name="options">This parameter can contai variety of possible options used to create notification.</param>
         /// <returns>Returns result of notification create operation.</returns>
-        NotificationViewResult View(NotificationViewOptions options);
+        Task<NotificationViewResult> View(NotificationViewOptions options);
     }
 }
