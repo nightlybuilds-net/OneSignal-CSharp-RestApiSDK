@@ -30,7 +30,7 @@ namespace OneSignal.CSharp.SDK.NetStandard.Resources.Notifications
         /// <returns></returns>
         public async Task<NotificationCreateResult> Create(NotificationCreateOptions options)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(options), Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonConvert.SerializeObject(options,Formatting.Indented,this.JsonSettings), Encoding.UTF8, "application/json");
             var response = await this.Client.PostAsync("notifications", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
